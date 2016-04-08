@@ -3,6 +3,7 @@ AllCops:
     - 'config/**/*'
     - 'bin/**/*'
     - 'Rakefile'
+    - 'db/schema.rb'
 
 Style/Documentation:
   Enabled: false
