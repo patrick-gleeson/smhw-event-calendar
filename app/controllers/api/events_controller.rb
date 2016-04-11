@@ -1,10 +1,12 @@
 module Api
   class EventsController < ApplicationController
     def create
-      if Event.create(event_params)
+      event = Event.new(event_params)
+      if event.save
         render json: { message: 'Event saved' }
       else
-        render json: { message: 'Event not saved' }
+        render json: { message: event.all_errors },
+               status: :unprocessable_entity
       end
     end
 

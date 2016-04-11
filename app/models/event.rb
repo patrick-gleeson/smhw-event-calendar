@@ -1,11 +1,6 @@
 class Event < ActiveRecord::Base
-  def start_date=(string_value)
-    write_attribute(:start_date, Event.parse_date_string(string_value))
-  end
-
-  def end_date=(string_value)
-    write_attribute(:end_date, Event.parse_date_string(string_value))
-  end
+  validates_presence_of :start_date, :end_date, :description,
+                        message: 'must be provided and must be valid'
 
   def as_json(_options = nil)
     {
@@ -13,6 +8,10 @@ class Event < ActiveRecord::Base
       end: (end_date + 1),
       title: description
     }
+  end
+
+  def all_errors
+    errors.full_messages.join('. ') + '.'
   end
 
   class << self

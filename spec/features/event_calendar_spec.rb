@@ -21,4 +21,18 @@ RSpec.feature 'Event calendar', type: :feature do
       expect(page).to have_text('My super event')
     end
   end
+
+  scenario 'I enter bad data', js: true do
+    visit '/events'
+    click_link 'Create event'
+    fill_in 'event_start_date', with: entry_format(tuesday_this_week)
+    fill_in 'event_end_date', with: 'Not a valid date'
+    fill_in 'event_description', with: 'My super event'
+    click_button 'Save'
+    expect(page).to have_text('End date must be provided and must be valid')
+
+    within '#calendar' do
+      expect(page).not_to have_text('My super event')
+    end
+  end
 end

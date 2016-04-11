@@ -23,17 +23,18 @@ $(document).ready(function() {
   $eventForm.submit(function() {
     $togglees.toggle();
   }).on("ajax:success", function(e, data, status, xhr)  {
-    if (xhr.status == 200) {
-      showAlertBox(data.message, true);
-      $eventForm.trigger('reset');
-      $calendar.fullCalendar('refetchEvents');
-    } else {
-      showAlertBox(data.message, false);
-      $togglees.toggle();
-    }
+    showAlertBox(data.message, true);
+    $eventForm.trigger('reset');
+    $calendar.fullCalendar('refetchEvents');
+
   }).on("ajax:error", function(e, data, status, xhr)  {
+    if (xhr == "Unprocessable Entity ") {
+      showAlertBox(data.responseJSON.message, false);
+      $togglees.toggle();
+    } else {
       showAlertBox('Something went wrong', false);
       $togglees.toggle();
+    }
   });
 
   function setupCalendar() {

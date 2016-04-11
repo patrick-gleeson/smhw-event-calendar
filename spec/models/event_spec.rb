@@ -40,6 +40,41 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe 'validation' do
+    subject do
+      Event.new(start_date: '2010-1-23',
+                end_date: '2010-1-24',
+                description: 'Some description')
+    end
+
+    it { should be_valid }
+
+    it 'disallows blank start dates' do
+      subject.start_date = ''
+      expect(subject).not_to be_valid
+    end
+
+    it 'disallows blank end dates' do
+      subject.start_date = ''
+      expect(subject).not_to be_valid
+    end
+
+    it 'disallows blank descriptions' do
+      subject.description = ''
+      expect(subject).not_to be_valid
+    end
+
+    it 'disallows invalid start dates' do
+      subject.start_date = 'Not a start date'
+      expect(subject).not_to be_valid
+    end
+
+    it 'disallows invalid end dates' do
+      subject.start_date = 'Not an end date'
+      expect(subject).not_to be_valid
+    end
+  end
+
   describe '.all_between' do
     it 'returns events that intersect with given range' do
       overlapping = [[5, 1], [3, 3], [5, 3], [3, 1]]
