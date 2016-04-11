@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :events, only: :index
 
   namespace :api do
-    resources :events, only: :create
+    resources :events, only: [:create, :index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

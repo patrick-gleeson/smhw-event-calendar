@@ -8,6 +8,11 @@ module Api
       end
     end
 
+    def index
+      events = Event.all_between(params[:start], params[:end])
+      render json: events
+    end
+
     def event_params
       params.require(:event).permit(:start_date, :end_date, :description)
     end

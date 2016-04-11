@@ -17,7 +17,8 @@ RSpec.feature 'Event calendar', type: :feature do
     click_button 'Save'
     expect(page).to have_text('Event saved')
 
-    pending 'verify that event displays on calendar'
-    expect(page).to have_text('My super event')
+    within '#calendar' do
+      expect(page).to have_text('My super event')
+    end
   end
 end
