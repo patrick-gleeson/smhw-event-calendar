@@ -1,6 +1,21 @@
 <h1>Events calendar</h1>
 
-<%= link_to 'Create event' %>
+<div id='alert_box' style='display:none'></div>
+
+<%= link_to 'Create event', '#', class: 'event_form_toggler event_form_togglee' %>
+
+<%= form_for :event,
+             url: api_events_path,
+             remote: true,
+             html: { id: 'new_event_form',
+                     style: 'display: none',
+                     class: 'event_form_togglee' } do |f| %>
+  <%= f.text_field :start_date, placeholder: "Start Date" %>
+  <%= f.text_field :end_date, placeholder: "End Date"  %>
+  <%= f.text_area :description, placeholder: "Description"  %>
+  <%= f.submit %>
+  <%= link_to 'Cancel', '#', class: 'event_form_toggler' %>
+<% end %>
 
 <!-- Remove the following image tag and add the markup to create a basic weekly calendar -->
 <%= image_tag 'events_calendar', width: '100%' %>

@@ -10,3 +10,31 @@
     font-weight: bold;
   }
 }
+
+#alert_box {
+  width: 200px;
+  margin: auto;
+  border: 1px solid;
+  padding: 5px;
+
+  &.success {
+    background-color: greenyellow;
+    border-color: green;
+  }
+
+  &.error {
+    background-color: pink;
+    border-color: red;
+  }
+}
+
+form {
+  display: block;
+  width: 500px;
+  margin:auto;
+
+  input[type=text], textarea {
+    display: block;
+    width: 100%;
+  }
+}

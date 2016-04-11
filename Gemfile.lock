@@ -112,6 +112,7 @@ GEM
       rails-assets-moment (>= 2.5.0)
     rails-assets-jquery (2.2.3)
     rails-assets-moment (2.12.0)
+    rails-assets-pikaday (1.4.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -206,6 +207,7 @@ DEPENDENCIES
   rails (= 4.2.5.1)
   rails-assets-fullcalendar!
   rails-assets-moment!
+  rails-assets-pikaday!
   rspec-rails (~> 3.0)
   rubocop
   sass-rails (~> 5.0)

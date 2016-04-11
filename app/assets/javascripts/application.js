@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require moment
 //= require fullcalendar
+//= require pikaday
 //= require_tree .
